@@ -82,38 +82,40 @@ class ECharts
                 $this->error = "unable to verify comment ($col->comment)";
                 return false;
             }
-            $cvs = array_merge(explode('|', $matches[2]));
-            foreach ($cvs as $kk => $vv) {
-                $result[] = [
-                    'title' => [
-                        'text' => $this->titleText ? $this->titleText : 'Undefined titleText',
-                        'subtext' => $this->titleSub ? $this->titleSub : '',
-                        'x' => 'center',
-                    ],
-                    'tooltip' => [
-                        'trigger' => 'item',
-                        'formatter' => '{a} <br/>{b} : {c} ({d}%)',
-                    ],
-                    'legend' => [
-                        'orient' => 'vertical',
-                        'left' => 'left',
-                        'data' => [],
-                    ],
-                    'series' => [
-                        'name' => $this->seriesName ? $this->seriesName : 'Undefined seriesName',
-                        'type' => 'pie',
-                        'radius' => '55%',
-                        'center' => ['50%', '60%'],
-                        'data' => [],
-                        'itemStyle' => [
-                            'emphasis' => [
-                                'shadowBlur' => 10,
-                                'shadowOffsetX' => 0,
-                                'shadowColor' => 'rgba(0, 0, 0, 0.5)',
-                            ]
+
+            $result[$v] = [
+                'title' => [
+                    'text' => $this->titleText ? $this->titleText : 'Undefined titleText',
+                    'subtext' => $this->titleSub ? $this->titleSub : '',
+                    'x' => 'center',
+                ],
+                'tooltip' => [
+                    'trigger' => 'item',
+                    'formatter' => '{a} <br/>{b} : {c} ({d}%)',
+                ],
+                'legend' => [
+                    'orient' => 'vertical',
+                    'left' => 'left',
+                    'data' => [],
+                ],
+                'series' => [
+                    'name' => $this->seriesName ? $this->seriesName : 'Undefined seriesName',
+                    'type' => 'pie',
+                    'radius' => '55%',
+                    'center' => ['50%', '60%'],
+                    'data' => [],
+                    'itemStyle' => [
+                        'emphasis' => [
+                            'shadowBlur' => 10,
+                            'shadowOffsetX' => 0,
+                            'shadowColor' => 'rgba(0, 0, 0, 0.5)',
                         ]
                     ]
-                ];
+                ]
+            ];
+
+            $cvs = array_merge(explode('|', $matches[2]));
+            foreach ($cvs as $kk => $vv) {
                 $result[$v]['legend']['data'][$kk] = $vv;
                 $result[$v]['series']['data'][$kk]['name'] = $vv;
                 $result[$v]['series']['data'][$kk]['value'] =
