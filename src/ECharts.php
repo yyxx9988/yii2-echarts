@@ -40,7 +40,7 @@ class ECharts
      */
     public function setFields($fields)
     {
-        if (ArrayHelper::isAssociative($fields)) {
+        if (ArrayHelper::isIndexed($fields)) {
             $this->fields = $fields;
         }
 
