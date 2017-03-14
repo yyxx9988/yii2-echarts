@@ -89,8 +89,8 @@ class ECharts
 
             $result[$v] = [
                 'title' => [
-                    'text' => $this->fields[$key]['titleText'] ? $this->fields[$key]['titleText'] : 'Undefined titleText',
-                    'subtext' => $this->fields[$key]['titleSub'] ? $this->fields[$key]['titleSub'] : '',
+                    'text' => isset($this->fields[$key]['titleText']) ? $this->fields[$key]['titleText'] : 'Undefined titleText',
+                    'subtext' => isset($this->fields[$key]['titleSub']) ? $this->fields[$key]['titleSub'] : '',
                     'x' => 'center',
                 ],
                 'tooltip' => [
@@ -103,7 +103,7 @@ class ECharts
                     'data' => [],
                 ],
                 'series' => [
-                    'name' => $this->fields[$key]['seriesName'] ? $this->fields[$key]['seriesName'] : 'Undefined seriesName',
+                    'name' => isset($this->fields[$key]['seriesName']) ? $this->fields[$key]['seriesName'] : 'Undefined seriesName',
                     'type' => 'pie',
                     'radius' => '55%',
                     'center' => ['50%', '60%'],
